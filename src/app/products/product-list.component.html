@@ -1,0 +1,11 @@
+<h2>Inventario de productos</h2>
+<button (click)="showForm()">Agregar producto</button>
+<ul>
+  <li *ngFor="let p of products">
+    {{p.name}} — 
+    <span [innerHTML]="p.description"></span> <!-- DOM Injection: descripción sin sanitizar -->
+    <button (click)="edit(p)">Editar</button>
+    <button (click)="delete(p.id)">Eliminar</button>
+  </li>
+</ul>
+<app-product-form *ngIf="formVisible" [product]="selectedProduct" (saved)="reload()"></app-product-form>

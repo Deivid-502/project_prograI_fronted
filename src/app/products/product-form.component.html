@@ -1,0 +1,8 @@
+<div>
+  <h3>{{ product ? 'Editar' : 'Agregar' }} producto</h3>
+  <form (ngSubmit)="save()">
+    <label>Nombre: <input [(ngModel)]="name" name="name"></label>
+    <label>Descripción: <input [(ngModel)]="desc" name="desc"></label>
+    <button type="submit">{{ product ? 'Actualizar' : 'Crear' }}</button>
+  </form>
+</div>
