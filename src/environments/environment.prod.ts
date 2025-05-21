@@ -1,4 +1,10 @@
+declare global {
+    interface Window { __env: any; }
+}
+
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:8080/api'
+    apiUrl: window.__env && window.__env.API_URL
+        ? window.__env.API_URL
+        : '',  // ¡Sin fallback hard-codeado en producción!
 };
