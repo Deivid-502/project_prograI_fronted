@@ -52,4 +52,8 @@ export class ProductFormComponent implements OnInit {
                 .subscribe(() => this.router.navigate(['/inventory']));
         }
     }
+    // Agrega este método para navegación
+    cancel() {
+        this.router.navigate(['/inventory']);
+    }
 }

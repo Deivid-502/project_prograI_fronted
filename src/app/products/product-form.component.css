@@ -1,36 +1,54 @@
-/* Formulario: tarjeta seminegra con inputs simétricos */
 .form-card {
-    max-width: 600px;
+    max-width: 500px;
     margin: 2rem auto;
-    padding: 2rem;
-    background: rgba(30,30,30,0.7) !important;
-    color: #EEEEEE;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    animation: fadeIn 0.5s ease;
+    padding: 1.5rem;
+    background: rgba(30, 30, 30, 0.85);
+    color: #EEE;
+    border-radius: 10px;
 }
 
-.form-card h2 {
-    margin: 0;
+.form-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
     text-align: center;
-    color: #FFFFFF;
+    margin-bottom: 1rem;
 }
 
-.mat-form-field {
-    width: 100%;
-}
-
-.actions {
+/* Grupos de input alineados horizontalmente */
+.input-group {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
 }
 
-button.mat-raised-button {
-    flex: 1;
-    background-color: #F06292 !important;
-    color: white;
+.input-group nb-icon {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    color: #ccc;
+    margin-right: 0.75rem;
+}
+
+/* Estiliza los inputs para que se vean más compactos */
+.input-group input[nbInput],
+.input-group textarea[nbInput] {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    color: #fff;
+}
+
+/* Botones */
+button[nbButton] {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
 }

@@ -48,3 +48,8 @@ button.mat-raised-button:hover {
 button.mat-button:hover {
     transform: translateX(2px);
 }
+
+nb-layout-column {
+    margin-top: 80px; /* deja espacio para el header fijo de 80px */
+    margin-bottom: 60px; /* también para evitar solapar con el footer */
+}
