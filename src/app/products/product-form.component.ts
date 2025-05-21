@@ -12,10 +12,12 @@ import { Product } from './product.model';
 export class ProductFormComponent implements OnInit {
     editing = false;
     id!: number;
+
+    // Inicializamos price en 0 (número), no null, para que patchValue acepte el valor
     form = this.fb.group({
         name: ['', Validators.required],
         description: ['', Validators.required],
-        price: [0, [Validators.required, Validators.min(0)]]
+        price: [0, [Validators.required, Validators.min(0.01)]]
     });
 
     constructor(
@@ -26,26 +28,32 @@ export class ProductFormComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.route.params.subscribe(p => {
-            if (p['id']) {
+        this.route.params.subscribe(params => {
+            if (params['id']) {
                 this.editing = true;
-                this.id = +p['id'];
-                this.api.getProducts().subscribe(list => {
-                    const prod = list.find(x => x.id === this.id)!;
-                    this.form.patchValue(prod);
+                this.id = +params['id'];
+                this.api.getProduct(this.id).subscribe(prod => {
+                    if (prod) {
+                        // patchValue acepta correctamente ahora que price es number
+                        this.form.patchValue(prod);
+                    }
                 });
             }
         });
     }
 
     submit() {
-        // Aserción para tratar form.value como Product completo
         const prod = this.form.value as Product;
-
         if (this.editing) {
-            this.api.updateProduct(this.id, prod).subscribe(() => this.router.navigate(['/inventory']));
+            this.api.updateProduct(this.id, prod)
+                .subscribe(() => this.router.navigate(['/inventory']));
         } else {
-            this.api.addProduct(prod).subscribe(() => this.router.navigate(['/inventory']));
+            this.api.addProduct(prod)
+                .subscribe(() => this.router.navigate(['/inventory']));
         }
+    }
+    // Agrega este método para navegación
+    cancel() {
+        this.router.navigate(['/inventory']);
     }
 }

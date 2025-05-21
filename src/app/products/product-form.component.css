@@ -1,5 +1,54 @@
 .form-card {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(30, 30, 30, 0.85);
+    color: #EEE;
+    border-radius: 10px;
+}
+
+.form-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Grupos de input alineados horizontalmente */
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.input-group nb-icon {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    color: #ccc;
+    margin-right: 0.75rem;
+}
+
+/* Estiliza los inputs para que se vean más compactos */
+.input-group input[nbInput],
+.input-group textarea[nbInput] {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    color: #fff;
+}
+
+/* Botones */
+button[nbButton] {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
 }

@@ -1,10 +1,69 @@
-.login-card {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    text-align: center;
+:host nb-layout-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 140px);
+    margin-top: -20px; /* ⬅️ Empuja hacia arriba suavemente */
 }
+
+/* Card de login */
+.login-card {
+    width: 360px;
+    padding: 2rem;
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+/* Título grande y centrado */
+.login-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+/* Iconos con tamaño equilibrado */
+nb-icon[nbPrefix] {
+    font-size: 18px !important;
+    height: 18px !important;
+    width: 18px !important;
+    margin-right: 0.5rem;
+    color: #999;
+}
+
+/* Campos alineados y compactos */
+nb-form-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+nb-form-field input[nbInput],
+nb-form-field textarea[nbInput] {
+    flex: 1;
+    font-size: 1rem !important;
+    padding: 0.75rem !important;
+    height: auto !important;
+}
+
+/* Botón de login */
+button[nbButton] {
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+}
+
+/* Error */
 .error {
-    color: red;
-    margin-top: 10px;
+    margin-top: 0.5rem;
+    color: #f06292;
+    font-weight: bold;
+    text-align: center;
 }

@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<nb-layout>
+    <nb-layout-header fixed>
+        <div class="header-content">
+            <div class="header-left">
+                <img src="assets/LogoUniversidad.png" class="logo" />
+                <span class="title">Prueba de Vulnerabilidades UMG 2025</span>
+            </div>
+            <div class="header-right">
+                <button nbButton size="small" *ngIf="auth.isLogged()" (click)="auth.logout()">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <router-outlet></router-outlet>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed>
+        <div class="footer-inner">
+            <small>&copy; 2025 Proyectos Finales UMG — Vulnerabilidades Web</small>
+        </div>
+    </nb-layout-footer>
+</nb-layout>
