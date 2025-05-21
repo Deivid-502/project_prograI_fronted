@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<header class="header">
+    <div class="header-left">
+        <img src="assets/LogoUniversidad.png" alt="Logo UMG" class="logo" />
+        <h1>Prueba de Vulnerabilidades UMG 2025</h1>
+    </div>
+    <button mat-button class="logout" *ngIf="auth.isLogged()" (click)="auth.logout()">
+        Cerrar Sesión
+    </button>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+    <small>&copy; 2025 Proyectos Finales UMG — Prueba de vulnerabilidades web</small>
+</footer>

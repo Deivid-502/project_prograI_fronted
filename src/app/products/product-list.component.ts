@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product.model';
 import { ApiService } from '../api.service';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,32 +9,28 @@ import { Router } from '@angular/router';
     styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+    // Definición de columnas para la tabla de Material
+    displayedColumns: string[] = ['id', 'name', 'description', 'price', 'actions'];
     products: Product[] = [];
-    displayedColumns = ['id', 'name', 'description', 'price', 'actions'];
 
-    constructor(
-        private api: ApiService,
-        private auth: AuthService,
-        private router: Router
-    ) {}
+    constructor(private api: ApiService, private router: Router) {}
 
-    ngOnInit(): void {
-        this.loadProducts();
+    ngOnInit() {
+        this.load();
     }
 
-    private loadProducts() {
+    // Carga los productos y refresca la tabla
+    load() {
         this.api.getProducts().subscribe(data => this.products = data);
     }
 
+    // Navega al formulario de edición
     edit(id: number) {
         this.router.navigate(['/inventory/edit', id]);
     }
 
+    // Elimina y recarga
     delete(id: number) {
-        this.api.deleteProduct(id).subscribe(() => this.loadProducts());
-    }
-
-    logout() {
-        this.auth.logout();
+        this.api.deleteProduct(id).subscribe(() => this.load());
     }
 }

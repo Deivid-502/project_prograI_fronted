@@ -1,13 +1,40 @@
 .list-card {
-    margin: 20px;
-    padding: 20px;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: rgba(30,30,30,0.8) !important;
+    color: #EEE;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 150px);
 }
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-table {
+
+.table-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Asegura que la tabla ocupe todo el ancho */
+.mat-table {
     width: 100%;
-    margin-top: 20px;
+}
+
+th.mat-header-cell, td.mat-cell {
+    color: #EEE;
+}
+
+button.mat-button {
+    color: #F06292;
+}
+button.mat-raised-button {
+    background-color: #1E88E5 !important;
+    color: white;
 }

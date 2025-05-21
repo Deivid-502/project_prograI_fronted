@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './products/product.model';
 
@@ -10,12 +10,16 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     login(username: string, password: string): Observable<string> {
-        // Vulnerable: Password y usuario viajan en body, pero backend concatena inseguro
         return this.http.post(`${this.base}/login`, { username, password }, { responseType: 'text' });
     }
 
     getProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.base}/products`);
+    }
+
+    // Nuevo método para obtener un solo producto
+    getProduct(id: number): Observable<Product> {
+        return this.http.get<Product>(`${this.base}/products/${id}`);
     }
 
     addProduct(p: Product): Observable<Product> {

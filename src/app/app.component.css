@@ -1,0 +1,37 @@
+.header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 70px;
+    background: rgba(30,30,30,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo {
+    height: 40px;
+}
+.header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #FFF;
+}
+.logout {
+    color: #FF6F61 !important;
+    font-weight: bold;
+}
+.footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 50px;
+    background: rgba(30,30,30,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    color: #CCC;
+}
