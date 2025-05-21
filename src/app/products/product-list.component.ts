@@ -1,35 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { Product } from '../model/product.model';
+import { Product } from './product.model';
+import { ApiService } from '../api.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html'
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
-  formVisible = false;
-  selectedProduct: Product | null = null;
+    products: Product[] = [];
+    displayedColumns = ['id', 'name', 'description', 'price', 'actions'];
 
-  constructor(private api: ApiService) {}
+    constructor(
+        private api: ApiService,
+        private auth: AuthService,
+        private router: Router
+    ) {}
 
-  ngOnInit() { this.reload(); }
+    ngOnInit(): void {
+        this.loadProducts();
+    }
 
-  reload() {
-    this.api.getProducts().subscribe(data => this.products = data);
-  }
+    private loadProducts() {
+        this.api.getProducts().subscribe(data => this.products = data);
+    }
 
-  showForm() {
-    this.selectedProduct = null;
-    this.formVisible = true;
-  }
+    edit(id: number) {
+        this.router.navigate(['/inventory/edit', id]);
+    }
 
-  edit(p: Product) {
-    this.selectedProduct = p;
-    this.formVisible = true;
-  }
+    delete(id: number) {
+        this.api.deleteProduct(id).subscribe(() => this.loadProducts());
+    }
 
-  delete(id: number) {
-    this.api.deleteProduct(id).subscribe(() => this.reload());
-  }
+    logout() {
+        this.auth.logout();
+    }
 }

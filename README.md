@@ -1,10 +1,8 @@
-# project_prograI_frontend
+# project_prograI_fronted
 
-## Requisitos
-- Node.js ≥16
-- Angular CLI
+# Frontend Vulnerable - XSS Demo
 
-## Instalación y ejecución
+## Ejecución
 ```bash
 npm install
 ng serve --open
