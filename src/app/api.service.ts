@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './products/product.model';
+import { environment } from '../environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ApiService {
-    private base = 'http://localhost:8080/api';
+    // Usar la URL definida en environment (runtime via env.js en producción)
+    private base: string = environment.apiUrl;
 
     constructor(private http: HttpClient) {}
 
@@ -17,7 +21,6 @@ export class ApiService {
         return this.http.get<Product[]>(`${this.base}/products`);
     }
 
-    // Nuevo método para obtener un solo producto
     getProduct(id: number): Observable<Product> {
         return this.http.get<Product>(`${this.base}/products/${id}`);
     }
